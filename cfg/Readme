@@ -1,0 +1,28 @@
+Write a server in C++ language serving arbitrary number of TCP clients.
+
+- For every TCP client connected a new thread in the server will be spawned. The thread will send a server-wide unique binary 32 bit ID number every second.
+The ID will be ASCII coded before sending to client and terminated by a new line character. The mechanism for finding unique IDs is performance sensitive and cannot be pre-computed.
+
+- The server also responds new line character received from the client with number of clients connected. Other characters received are ignored.
+
+- Do use only basic system libraries (no zmq, boost); STL is allowed.
+
+- Ctrl-C will send "Bye\n" to all the connected clients and immediately terminate the server cleanly.
+
+- Limit the usage of global variables.
+
+The evaluation is based on simplicity, correctness, performance, and, code readability.
+
+
+ASSUMPTIONS :
+
+No OS target is specified, Linux is
+
+Using TCP, the underlying protocol IP
+
+No information is given about the evolution of the number of clients in the time. Consequently, no optimization in the choice of the STL container for them
+
+In addition, errors management is not specified so that no optimization can be done in this way
+
+Note that this code has been developed in a full object architecture, without any global variable
+
